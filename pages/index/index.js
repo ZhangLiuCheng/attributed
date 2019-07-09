@@ -2,6 +2,24 @@
 //获取应用实例
 const app = getApp()
 
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  print() {
+    console.log(this.x + ' ====  ' + this.y)
+  }
+
+  static distance(a, b) {
+    const dx = a.x - b.x;
+    const dy = a.y - b.y;
+
+    return Math.hypot(dx, dy);
+  }
+}
+
 function person(name) {
   this.name = name
   this.print = print
@@ -32,12 +50,20 @@ Page({
   },
 
   onLoad: function () {
-    let p1 = new person('zhangsan')
-    p1.print()
 
-    let p2 = new person('lisi')
-    p2.print()
+    
+    const p1 = new Point(5, 5);
+    const p2 = new Point(10, 10);
     p1.print()
+    console.log(Point.distance(p1, p2));
+
+    
+
+    let pp1 = new person('zhangsan')
+    pp1.print()
+    let pp2 = new person('lisi')
+    pp2.print()
+    pp1.print()
 
     if (app.globalData.userInfo) {
       this.setData({
